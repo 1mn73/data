@@ -18,9 +18,22 @@
   };
   firebase.initializeApp(config);
   firebase.database().ref().once('value', function(snap){
-
+    
     document.getElementById("response").innerHTML = JSON.stringify(snap.val());
 })
+  
+  httpGetAsync("https://boards.4chan.org/g/thread/63128828", console.log())
+  
+  function httpGetAsync(theUrl, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
 </script>
   </body>
 </html>
