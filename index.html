@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <div id="response"></div>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyASLUxfzGkjzpM_yx6aDrM-K1eWzBvRqRQ",
+    authDomain: "vrxonline.firebaseapp.com",
+    databaseURL: "https://vrxonline.firebaseio.com",
+    projectId: "vrxonline",
+    storageBucket: "vrxonline.appspot.com",
+    messagingSenderId: "204847779076"
+  };
+  firebase.initializeApp(config);
+  firebase.database().ref().once('value', function(snap){
+
+    document.getElementById("response").innerHTML = JSON.stringify(snap.val());
+})
+</script>
+  </body>
+</html>
